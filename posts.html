@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Posts</title>
 </head>
 <body>
-$END$
+  <h1>Posts</h1>
+  <button onclick="loadPosts()">Fetch Posts</button>
+  <pre id="data">Click the button to load posts</pre>
+
+  <script>
+    async function loadPosts() {
+      const res = await fetch('/api/posts');
+      const data = await res.json();
+      document.getElementById('data').textContent = JSON.stringify(data.slice(0, 5), null, 2);
+    }
+  </script>
+
+  <p><a href="/">Go Home</a></p>
 </body>
 </html>

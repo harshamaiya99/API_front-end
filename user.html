@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>User Details</title>
 </head>
 <body>
-$END$
+  <h1>User Details</h1>
+  <button onclick="loadUser()">Fetch User</button>
+  <pre id="data">Click the button to load user data</pre>
+
+  <script>
+    async function loadUser() {
+      const res = await fetch('/api/user');
+      const data = await res.json();
+      document.getElementById('data').textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+
+  <p><a href="/">Go Home</a></p>
 </body>
 </html>
