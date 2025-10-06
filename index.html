@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jsonplaceholder.typicode.com</title>
+</head>
+<body>
+  <h1>jsonplaceholder.typicode.com</h1>
+  <pre id="data">Loading...</pre>
+
+  <script>
+    async function fetchData() {
+      try {
+        const response = await fetch('/api/data');
+        const data = await response.json();
+        document.getElementById('data').textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        document.getElementById('data').textContent = 'Error fetching data.';
+      }
+    }
+
+    fetchData();
+  </script>
+</body>
+</html>
